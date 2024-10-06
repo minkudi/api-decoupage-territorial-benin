@@ -23,7 +23,6 @@ Description de l'API de découpage territorial du Bénin 📚
 ## Notes 📝
 
 * ⚠️ Nous n'avons pas utilisé la recherche par nom en raison des problèmes de sensibilité à la casse et autres.
-* 🔄 Les données sont stockées dans un fichier JSON qui est mis à jour régulièrement.
 
 ## Contribuer 🤝
 
@@ -31,7 +30,7 @@ Nous sommes ouverts à toutes les approches et solutions pour améliorer l'API. 
 
 ## Remerciements 🎉
 
-Nous remercions [@leplutonien](https://github.com/leplutonien) pour avoir fourni les données  👏.
+Nous remercions [@leplutonien](https://github.com/leplutonien) pour avoir fourni le fichier source 👏.
 
 ## Licence 📜
 
