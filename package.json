@@ -1,0 +1,22 @@
+{
+  "name": "decoupage-territorial-benin-api",
+  "version": "1.0.0",
+  "description": "API de découpage territorial du Bénin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "decoupage",
+    "territorial",
+    "benin",
+    "api"
+  ],
+  "author": "Armand <guedegbe.juste@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  }
+}
