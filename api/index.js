@@ -1,15 +1,10 @@
 const express = require('express');
+const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
 const app = express();
 const data = require('../data/decoupage_territorial_benin.json');
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    next();
-  });
-  
 // Options de configuration pour swagger-jsdoc
 const options = {
     definition: {
@@ -85,6 +80,12 @@ const options = {
   };
 
 const specs = swaggerJsdoc(options);
+
+app.use(cors({
+    origin: 'https://tonsessi.vercel.app/', 
+    methods: ['GET', 'POST', 'OPTIONS'],
+  }));
+  
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
