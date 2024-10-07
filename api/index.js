@@ -6,21 +6,77 @@ const data = require('../data/decoupage_territorial_benin.json');
 
 // Options de configuration pour swagger-jsdoc
 const options = {
-  definition: {
-    openapi: '3.0.0',
-    info: {
-      title: 'API de découpage territorial du Bénin',
-      version: '1.0.0',
-      description: 'API pour récupérer les départements, communes et arrondissements du Bénin',
-    },
-    servers: [
-      {
-        url: 'http://localhost:3000/api/v1',
+    definition: {
+      openapi: '3.0.0',
+      info: {
+        title: 'API de découpage territorial du Bénin',
+        version: '1.0.0',
+        description: 'API pour récupérer les départements, communes et arrondissements du Bénin',
       },
-    ],
-  },
-  apis: ['./api/**/*.js'], // Chemin vers les fichiers contenant les annotations Swagger
-};
+      servers: [
+        {
+          url: 'https://api-decoupage-benin.onrender.com',
+        },
+      ],
+      components: {
+        schemas: {
+          Departement: {
+            type: 'object',
+            properties: {
+              id_dep: {
+                type: 'integer',
+                description: 'Identifiant du département',
+              },
+              lib_dep: {
+                type: 'string',
+                description: 'Nom du département',
+              },
+            },
+          },
+          Commune: {
+            type: 'object',
+            properties: {
+              id_com: {
+                type: 'integer',
+                description: 'Identifiant de la commune',
+              },
+              lib_com: {
+                type: 'string',
+                description: 'Nom de la commune',
+              },
+            },
+          },
+          Arrondissement: {
+            type: 'object',
+            properties: {
+              id_arrond: {
+                type: 'integer',
+                description: 'Identifiant de l\'arrondissement',
+              },
+              lib_arrond: {
+                type: 'string',
+                description: 'Nom de l\'arrondissement',
+              },
+            },
+          },
+          Quartier: {
+            type: 'object',
+            properties: {
+              id_quartier: {
+                type: 'integer',
+                description: 'Identifiant du quartier',
+              },
+              lib_quartier: {
+                type: 'string',
+                description: 'Nom du quartier',
+              },
+            },
+          },
+        },
+      },
+    },
+    apis: ['./index.js'],
+  };
 
 const specs = swaggerJsdoc(options);
 
