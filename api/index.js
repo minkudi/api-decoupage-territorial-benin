@@ -5,6 +5,12 @@ const swaggerJsdoc = require('swagger-jsdoc');
 const app = express();
 const data = require('../data/decoupage_territorial_benin.json');
 
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 // Options de configuration pour swagger-jsdoc
 const options = {
     definition: {
@@ -81,11 +87,7 @@ const options = {
 
 const specs = swaggerJsdoc(options);
 
-app.use(cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
+
   
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
