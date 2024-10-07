@@ -4,6 +4,7 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
 const app = express();
 const data = require('../data/decoupage_territorial_benin.json');
+
 // Options de configuration pour swagger-jsdoc
 const options = {
     definition: {
@@ -79,6 +80,13 @@ const options = {
   };
 
 const specs = swaggerJsdoc(options);
+
+const allowedOrigins = ['https://tonsessi.vercel.app']; // Remplacez par l'URL de votre portfolio
+app.use(cors({
+    origin: allowedOrigins,
+    methods: ['GET'], // Méthodes autorisées
+}));
+
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 /**
@@ -250,24 +258,6 @@ app.get('/departements/:id_dep/communes/:id_com/arrondissements/:id_arrond/quart
 });
 
 const port = 3000;
-
-app.use(cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-  }));
-  
-  app.get('/proxy/*', async (req, res) => {
-    const url = `https://api-decoupage-benin.onrender.com${req.params[0]}`;
-    try {
-      const response = await axios.get(url);
-      res.json(response.data);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Erreur de proxy' });
-    }
-  });
-  
 app.listen(port, () => {
   console.log(`Serveur démarré sur le port ${port}`);
 });
