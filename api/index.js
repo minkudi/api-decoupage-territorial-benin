@@ -82,10 +82,10 @@ const options = {
 const specs = swaggerJsdoc(options);
 
 app.use(cors({
-    origin: 'https://tonsessi.vercel.app', 
+    origin: '*',
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
-  }));
+}));
   
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
